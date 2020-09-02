@@ -10,16 +10,16 @@ import com.watchlist.backend.repostitory.MovieRepository;
 
 @Service
 public class MovieService {
+
 	@Autowired
 	private MovieRepository repo;
 
 	public List<Movie> showAll() {
-
 		return repo.findAll();
 	}
-	
-	public String newMovie(Movie movie) {
+
+	public void newMovie(Movie movie) {
 		repo.save(movie);
-		return "Movie added";
 	}
+		
 }

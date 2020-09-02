@@ -3,14 +3,19 @@ package com.watchlist.backend.model;
 import java.util.List;
 
 public class Watchlist {
-	
+
 	private List<Movie> watchlist;
-	
 
 	@Override
 	public String toString() {
-		return "Watchlist [watchlist=" + watchlist + "]";
+		StringBuilder sb= new StringBuilder();
+		for (Movie movie : watchlist) {
+			sb.append(movie);
+			sb.append("/n");
+		}
+		return sb.toString();	
 	}
+		
 
 	public Watchlist() {
 		super();
@@ -28,7 +33,5 @@ public class Watchlist {
 	public void setWatchlist(List<Movie> watchlist) {
 		this.watchlist = watchlist;
 	}
-	
-	
 
 }

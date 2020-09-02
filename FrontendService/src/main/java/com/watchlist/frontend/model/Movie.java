@@ -56,8 +56,8 @@ public class Movie {
 	}
 	@Override
 	public String toString() {
-		return "Movie [Id=" + Id + ", title=" + title + ", year=" + year + ", genre=" + genre + ", rating=" + rating
-				+ "]";
+		return "Movie "+ Id + ", title=" + title + ", year=" + year + ", genre=" + genre + ", rating=" + rating;
+				
 	}
 	
 	
