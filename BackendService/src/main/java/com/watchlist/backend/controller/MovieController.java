@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,8 +33,13 @@ public class MovieController {
 //		return "readiii";
 //	}
 	
+//	@PostMapping("/movie")
+//	public String addMovie(@RequestBody Movie movie) {
+//		System.out.println("this is wxecuting");
+//		return service.newMovie(movie);
+//	}
 	@PostMapping("/movie")
-	public String addMovie(@RequestBody Movie movie) {
+	public String addMovie(@ModelAttribute Movie movie) {
 		System.out.println("this is wxecuting");
 		return service.newMovie(movie);
 	}
