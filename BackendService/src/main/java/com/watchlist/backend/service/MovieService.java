@@ -1,6 +1,7 @@
 package com.watchlist.backend.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,14 @@ public class MovieService {
 
 	public void newMovie(Movie movie) {
 		repo.save(movie);
+	}
+	public Movie findMovieByID(long id) {
+	Optional<Movie> movie=repo.findById(id);
+	return movie.orElse(null);
+	}
+	
+	public List<Movie> findAllMovies(){
+		return	repo.findAll();
 	}
 		
 }
