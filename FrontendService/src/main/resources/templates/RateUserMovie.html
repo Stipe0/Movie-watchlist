@@ -1,0 +1,24 @@
+<html xmls:th="http://www.thymeleaf.org">
+	<head>
+		<title>Rate Movie </title>
+	</head>
+	<body>
+		<h1 th:text="${loggedUser}"></h1>
+		<form action="#" th:action="@{http://localhost:8081/rateusermovie}"   method="post">
+		<div>
+		<input type="number" name="movieID">Movie ID</input>
+		</div>	
+		<div>
+		<input type="number" name="rating">Movie Rating</input>
+		</div>
+		<div>
+		<input type="text" name="comment">Comment</input>
+		</div>
+		
+		        <p><input type="submit" value="Submit" /> </p>
+		        </form>
+		        
+	</body>
+
+
+</html>

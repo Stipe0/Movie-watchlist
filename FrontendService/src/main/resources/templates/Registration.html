@@ -1,0 +1,26 @@
+<html xmls:th="http://www.thymeleaf.org">
+	<head>
+		<title> User Registration </title>
+	</head>
+	<body>
+		<form action="#" th:action="@{http://localhost:8081/registration}"  method="post">
+		<div>
+		<input type="text" name="name">Name</input>
+		</div>
+		<div>
+		<input type="text" name="lastName">Lastname</input>
+		</div>
+		<div>
+		<input type="text" name="username">Username</input>
+		</div>
+		<div>
+		<input type="text" name="password">Password</input>
+		</div>
+		
+		        <p><input type="submit" value="Submit" /> </p>
+		        </form>
+		        
+	</body>
+
+
+</html>

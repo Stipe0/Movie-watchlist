@@ -1,0 +1,20 @@
+<html xmls:th="http://www.thymeleaf.org">
+	<head>
+		<title> User role registration </title>
+	</head>
+	<body>
+		<form action="#" th:action="@{http://localhost:8081/roleregistration}"   modelAttribute="role" method="post">
+		<div>
+		<input type="text" name="name">Role</input>
+		</div>	
+		<div>
+		<input type="text" name="desc">Description</input>
+		</div>
+		
+		        <p><input type="submit" value="Submit" /> </p>
+		        </form>
+		        
+	</body>
+
+
+</html>
