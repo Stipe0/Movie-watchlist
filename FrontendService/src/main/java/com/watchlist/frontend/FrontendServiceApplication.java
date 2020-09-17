@@ -8,10 +8,10 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 public class FrontendServiceApplication {
 	
-	@Bean
-	public RestTemplate resttemplate() {
-		return new RestTemplate();
-	}
+//	@Bean
+//	public RestTemplate resttemplate() {
+//		return new RestTemplate();
+//	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(FrontendServiceApplication.class, args);

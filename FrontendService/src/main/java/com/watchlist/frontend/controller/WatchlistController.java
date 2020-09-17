@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.client.RestTemplate;
 
-import com.watchlist.frontend.model.Watchlist;
+import com.core.user.mode.movie.watchlist.Watchlist;
 
 @Controller
 
@@ -19,16 +19,19 @@ public class WatchlistController {
 	public String indexPage() {
 		return "index";
 	}
+	
+	@GetMapping("/registration")
+	public String register() {
+		return "Registration";
+	}
 
-	@GetMapping("/watchlist")
-	public String watchlist(Model model) {
-		Watchlist a=restTemplate.getForObject("http://localhost:8081/all", Watchlist.class);
-		model.addAttribute("message",a);
-		return "watchlist";
-	}
-	@GetMapping("/movie")
-	public String addFilm() {
-		return "newMovie";
-	}
-		
+//	@GetMapping("/watchlist")
+//	public String watchlist(Model model) {
+//		Watchlist a = restTemplate.getForObject("http://localhost:8081/all", Watchlist.class);
+//		model.addAttribute("message",a);
+//		return "watchlist";
+//	}
+	
+	
+
 }
