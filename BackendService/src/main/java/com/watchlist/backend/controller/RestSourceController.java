@@ -24,6 +24,8 @@ import com.watchlist.backend.service.UserService;
 @RestController
 public class RestSourceController {
 
+	private static final String LOGGED_USER_URL = "http://localhost:8082/logged/curretnuser";
+
 	@Autowired
 	private MovieService service;
 
@@ -75,7 +77,7 @@ public class RestSourceController {
 	@PostMapping("/myratedmovies")
 	public Map<Movie, Review> getMyRatedMovies() {
 
-		ResponseEntity<Integer> userID = restTemplate.exchange("http://localhost:8082/user/curretnuser",
+		ResponseEntity<Integer> userID = restTemplate.exchange(LOGGED_USER_URL,
 				HttpMethod.POST, null, Integer.class);
 		Map<Movie, Review> map = reviewService.getMyReview(userID.getBody());
 

@@ -22,7 +22,7 @@ import com.watchlist.backend.service.UserService;
 
 public class RedirectController {
 
-	private static final String LOGGED_USER_URL = "http://localhost:8082/admin/curretnuser";
+	private static final String LOGGED_USER_URL = "http://localhost:8082/logged/curretnuser";
 
 	private static final String USER_HOME_PAGE = "redirect:http://localhost:8082/user";
 
