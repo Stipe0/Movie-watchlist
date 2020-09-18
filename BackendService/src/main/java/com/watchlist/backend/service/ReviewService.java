@@ -3,9 +3,7 @@ package com.watchlist.backend.service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.OptionalDouble;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +17,7 @@ public class ReviewService {
 
 	@Autowired
 	ReviewRepository repo;
-	
+
 	@Autowired
 	MovieService movieService;
 
@@ -50,20 +48,19 @@ public class ReviewService {
 		return movieRew;
 
 	}
-	
-	
-	public Map<Movie, Review> getMyReview(int userID){
-		List<Review> myReview =repo.findAllByUserID(userID);
-		if(myReview.isEmpty()) return null;
-		
-		System.out.println(myReview+"in rew serv");
-		Map<Movie, Review> movRewMap= new HashMap<>();
-		
+
+	public Map<Movie, Review> getMyReview(int userID) {
+		List<Review> myReview = repo.findAllByUserID(userID);
+		if (myReview.isEmpty())
+			return null;
+
+		Map<Movie, Review> movRewMap = new HashMap<>();
+
 		for (Review review : myReview) {
 			movRewMap.put(movieService.findMovieByID(review.getMovieID()), review);
-			
+
 		}
-		
+
 		return movRewMap;
 	}
 }

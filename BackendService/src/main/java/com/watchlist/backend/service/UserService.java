@@ -15,6 +15,8 @@ import com.watchlist.backend.repostitory.UserRepository;
 @Service
 public class UserService {
 
+	private static final int DEFAULT_LOGIN_ROLE = 1;
+
 	@Autowired
 	private UserRepository repo;
 
@@ -22,7 +24,7 @@ public class UserService {
 	RoleService roleService;
 
 	public void saveUser(User user) {
-		Role userRole = roleService.getRoleById(1);
+		Role userRole = roleService.getRoleById(DEFAULT_LOGIN_ROLE);
 		Set<Role> defaultRole = new HashSet<>();
 		defaultRole.add(userRole);
 		user.setRoles(defaultRole);
@@ -31,24 +33,23 @@ public class UserService {
 
 	public User retUser(String username) {
 		Optional<User> user = repo.findByUsername(username);
-
 		return user.orElse(null);
 	}
-	
+
 	public User userByID(int id) {
-		Optional<User> found=repo.findById(id);
-	return found.orElse(null);
+		Optional<User> found = repo.findById(id);
+		return found.orElse(null);
 	}
-	
-	public void  updateUserRole(User user,Role role) {
+
+	public void updateUserRole(User user, Role role) {
 		user.getRoles().add(role);
 		repo.save(user);
 	}
-	
-	public List<User> allUsers(){
+
+	public List<User> allUsers() {
 		return repo.findAll();
 	}
-	
+
 	public User userByUsername(String Username) {
 		return repo.findByUsername(Username).orElse(null);
 	}

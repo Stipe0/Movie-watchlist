@@ -12,16 +12,16 @@ import com.watchlist.backend.repostitory.RoleRepositrory;
 public class RoleService {
 	@Autowired
 	RoleRepositrory repo;
-	
+
 	public void saveRole(Role role) {
 		repo.save(role);
 	}
-	
+
 	public Role getRoleById(int id) {
 		return repo.findById(id).orElse(null);
 	}
-	
-	public List<Role> getAllRolles(){
+
+	public List<Role> getAllRolles() {
 		return repo.findAll();
 	}
 }

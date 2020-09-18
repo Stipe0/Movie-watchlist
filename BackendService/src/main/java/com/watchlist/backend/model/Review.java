@@ -1,41 +1,34 @@
 package com.watchlist.backend.model;
 
 import java.io.Serializable;
-import java.util.Set;
 
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.springframework.context.annotation.ComponentScan;
 
 @Entity
 @Table(name = "Review")
 @IdClass(ReviewID.class)
 public class Review implements Serializable {
-	
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	private long movieID;
-	
+
 	@Id
 	private int userID;
-	
+
 	@Column(name = "rating")
 	private int rating;
-	
+
 	@Column(name = "comment")
 	private String comment;
-
 
 	public int getRating() {
 		return rating;
@@ -68,11 +61,12 @@ public class Review implements Serializable {
 	public void setUserID(int userID) {
 		this.userID = userID;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Review [rating=" + rating + ", comment=" + comment + "]\n";
+	}
 	
 	
 
-	
-	
-	
 }

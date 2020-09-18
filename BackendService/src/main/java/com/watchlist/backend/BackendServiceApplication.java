@@ -11,12 +11,10 @@ public class BackendServiceApplication {
 	public RestTemplate resttemplate() {
 		return new RestTemplate();
 	}
-	
 
 	public static void main(String[] args) {
 		SpringApplication.run(BackendServiceApplication.class, args);
-		
+
 	}
-	
-	
+
 }

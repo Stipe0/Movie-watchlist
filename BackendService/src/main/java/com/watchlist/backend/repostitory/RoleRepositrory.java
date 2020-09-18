@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.watchlist.backend.model.Role;
 
 @Repository
-public interface RoleRepositrory extends JpaRepository<Role, Integer>{
+public interface RoleRepositrory extends JpaRepository<Role, Integer> {
 
 }

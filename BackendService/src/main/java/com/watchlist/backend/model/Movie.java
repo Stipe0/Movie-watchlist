@@ -1,8 +1,11 @@
 package com.watchlist.backend.model;
 
-import java.util.Set;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "Movie")
@@ -82,7 +85,7 @@ public class Movie {
 	@Override
 	public String toString() {
 		return "Movie [Id=" + Id + ", title=" + title + ", year=" + year + ", genre=" + genre + ", summary=" + summary
-				+ "]";
+				+ "]\n";
 	}
 
 }

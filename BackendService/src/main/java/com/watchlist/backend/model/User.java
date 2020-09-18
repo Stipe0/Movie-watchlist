@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -38,9 +37,9 @@ public class User {
 	@JoinTable(name = "auth_user_role", joinColumns = @JoinColumn(name = "auth_user_id"), inverseJoinColumns = @JoinColumn(name = "auth_role_id"))
 	private Set<Role> roles;
 
-//	@OneToMany
-//	//@JoinTable(name = "user_review", joinColumns = @JoinColumn(name = "auth_user_id"), inverseJoinColumns = @JoinColumn(name = "review_id"))
-	//private Set<Review> reviews;
+	public User() {
+		super();
+	}
 
 	public int getId() {
 		return id;
@@ -90,22 +89,11 @@ public class User {
 		this.roles = roles;
 	}
 
-//	public Set<Review> getReviews() {
-//		return reviews;
-//	}
-//
-//	public void setReviews(Set<Review> reviews) {
-//		this.reviews = reviews;
-//	}
-
-	public User() {
-		super();
-	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", lastName=" + lastName + ", username=" + username + ", password="
-				+ password + ", roles=" + roles + ", reviews="  + "]";
+				+ password + ", roles=" + roles + ", reviews=" + "]\n";
 	}
-	
+
 }
