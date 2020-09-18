@@ -1,8 +1,5 @@
-com\core\user\mode\movie\watchlist\Watchlist.class
-com\core\user\model\review\Review.class
 com\core\user\model\movie\Movie.class
-com\core\user\model\review\ratedmovies\RatedMovies.class
-com\core\user\model\user\userlist\UserList.class
-com\core\user\model\role\rolelist\RoleList.class
+com\core\user\review\Review.class
 com\core\user\model\role\Role.class
 com\core\user\model\user\User.class
+com\core\user\review\ReviewID.class
