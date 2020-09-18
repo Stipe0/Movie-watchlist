@@ -15,45 +15,23 @@ import com.watchlist.frontend.model.MyUserDetails;
 
 @Service
 public class MyUserDetailsService implements UserDetailsService {
-//
-//	@Autowired
-//	UserRepository userRepository;
-//	
+
 	@Autowired
 	private RestTemplate restTemplate;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-		System.out.println(username);
 		ResponseEntity<User> user = restTemplate.exchange("http://localhost:8081/user/" + username, HttpMethod.POST,
 				null, User.class, username);
-		//System.out.println("after rest and before user get body"+ "  "+user);
 		User a = user.getBody();
 		if (a == null)
 			throw new UsernameNotFoundException(username + " not found");
-		
-//		User b= new User();
-//		b.setUsername("as");
-//		b.setPassword("as");
+
 		MyUserDetails userDetails = new MyUserDetails(a);
-		LoggedUser loggedUser= new LoggedUser(a);
+		@SuppressWarnings("unused")
+		LoggedUser loggedUser = new LoggedUser(a);
 		return userDetails;
 
-//		UserDetails user= (UserDetails) restTemplate.exchange("http://localhost:8081/user/{username}", 
-//				 HttpMethod.GET,
-//				null,
-//				UserDetails.class,
-//				username);
-//		return user;
-
-//	      
-
-		// Optional<User> user = userRepository.findByUsername(username);
-//
-//	        user.orElseThrow(() -> new UsernameNotFoundException("Not found: " + username));
-//
-//	        return user.map(MyUserDetails::new).get();
-//	    
 	}
 }

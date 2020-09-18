@@ -4,8 +4,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
-import com.watchlist.frontend.model.MyUserDetails;
-
 @Configuration
 public class FrontendConfig {
 	@Bean

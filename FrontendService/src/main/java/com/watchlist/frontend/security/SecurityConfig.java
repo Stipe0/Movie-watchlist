@@ -19,53 +19,36 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public PasswordEncoder getPasswordEncoder() {
 		return NoOpPasswordEncoder.getInstance();
 	}
-//
-//	@Autowired
-//	private DataSource dataSource;
 
-	
 	@Autowired
 	UserDetailsService userDetailService;
-	
+
 	@Autowired
 	LoginSucessHandler successHandler;
-	
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailService );
-		//.dataSource(dataSource)
+		auth.userDetailsService(userDetailService);
 
-//		.withUser(User.withUsername("stipe")
-//				.password("stipe")
-//				.roles("ADMIN"))
-//		.withUser(User.withUsername("jurica")
-//				.password("jurica")
-//				.roles("USER"));
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-		
-		.antMatchers("/registration").permitAll()
-		//.antMatchers("/").hasAnyRole("USER","ADMIN")
-		.antMatchers("/admin/**").hasAnyRole("ADMIN")
-		.antMatchers("/user/**").hasAnyRole("USER")
-//		.antMatchers("/movie").hasRole("ADMIN")
-//		.antMatchers("/watchlist").hasAnyRole("USER","ADMIN")
-		.and().formLogin()
-		.successHandler(successHandler);
-		//.permitAll().loginPage("/login");
-		
+				.antMatchers("/registration").permitAll()
+				.antMatchers("/admin/**").hasAnyRole("ADMIN")
+				.antMatchers("/logged/**").hasAnyRole("ADMIN","USER")
+				.antMatchers("/user/**").hasAnyRole("USER")
+				.and()
+				.formLogin().successHandler(successHandler);
+
 	}
+
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-	    web.ignoring().antMatchers("/admin/curretnuser")
-	    .antMatchers("/user/curretnuser");
+		web.ignoring().
+		antMatchers("/logged/curretnuser");
+		
 	}
-	
-	
-	
-	
 
 }

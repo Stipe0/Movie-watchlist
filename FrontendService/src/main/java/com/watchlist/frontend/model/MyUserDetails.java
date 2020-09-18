@@ -13,18 +13,21 @@ import com.core.user.model.user.User;
 @Component
 public class MyUserDetails implements UserDetails {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private User user;
 
 	public MyUserDetails(User user) {
 		this.user = user;
 
 	}
-	
-	
+
 	public MyUserDetails() {
 		super();
 	}
-
 
 	public int getID() {
 		return user.getId();
@@ -32,7 +35,6 @@ public class MyUserDetails implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// return Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN"));
 		return user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getName()))
 				.collect(Collectors.toSet());
 	}
@@ -49,27 +51,22 @@ public class MyUserDetails implements UserDetails {
 
 	@Override
 	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public boolean isEnabled() {
-		// TODO Auto-generated method stub
 		return true;
 	}
-	
 
 }

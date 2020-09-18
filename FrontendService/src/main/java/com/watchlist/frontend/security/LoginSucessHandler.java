@@ -16,10 +16,8 @@ import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
-import com.watchlist.frontend.model.LoggedUser;
-
 @Configuration
-public class LoginSucessHandler extends SimpleUrlAuthenticationSuccessHandler{
+public class LoginSucessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
 	@Override
 	protected void handle(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
@@ -32,24 +30,21 @@ public class LoginSucessHandler extends SimpleUrlAuthenticationSuccessHandler{
 		}
 		RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 		redirectStrategy.sendRedirect(request, response, targetUrl);
-	
+
 	}
-	
+
 	protected String determineTargetUrl(Authentication authentication) {
 		String url = "/login?error=true";
 
-		// Fetch the roles from Authentication object
 		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 		List<String> roles = new ArrayList<String>();
 		for (GrantedAuthority a : authorities) {
 			roles.add(a.getAuthority());
 		}
 
-		// check user role and decide the redirect URL
 		if (roles.contains("ROLE_ADMIN")) {
 			url = "/admin";
-		} 
-		else if (roles.contains("ROLE_USER")) {
+		} else if (roles.contains("ROLE_USER")) {
 			url = "/user";
 		}
 		return url;
